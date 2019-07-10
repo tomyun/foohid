@@ -145,6 +145,7 @@ IOReturn it_unbit_foohid_userclient::methodCreate(IOExternalMethodArguments *arg
     UInt8 serial_number_len = (UInt8)arguments->scalarInput[5];
     UInt32 vendorID = (UInt32)arguments->scalarInput[6];
     UInt32 productID = (UInt32)arguments->scalarInput[7];
+    UInt32 locationID = (UInt32)arguments->scalarInput[8];
     
     user_buf = IOMemoryDescriptor::withAddressRange((vm_address_t)name_ptr, name_len,
                                                     kIODirectionOut, m_owner);
@@ -185,7 +186,7 @@ IOReturn it_unbit_foohid_userclient::methodCreate(IOExternalMethodArguments *arg
     if (!ptr3) goto nomem;
     
     ret = m_hid_provider->methodCreate(ptr, name_len, ptr2, descriptor_len, ptr3,
-                                       serial_number_len, vendorID, productID);
+                                       serial_number_len, vendorID, productID, locationID);
     
     user_buf->complete();
     descriptor_buf->complete();

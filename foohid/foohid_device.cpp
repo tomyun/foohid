@@ -71,6 +71,10 @@ void it_unbit_foohid_device::setProductID(uint32_t productID) {
     m_product_id = OSNumber::withNumber(productID, 32);
 }
 
+void it_unbit_foohid_device::setLocationID(uint32_t locationID) {
+    m_location_id = OSNumber::withNumber(locationID, 32);
+}
+
 IOReturn it_unbit_foohid_device::newReportDescriptor(IOMemoryDescriptor **descriptor) const {
     LogD("Executing 'it_unbit_foohid_device::newReportDescriptor()'.");
     IOBufferMemoryDescriptor *buffer =
@@ -112,4 +116,9 @@ OSNumber *it_unbit_foohid_device::newVendorIDNumber() const {
 OSNumber *it_unbit_foohid_device::newProductIDNumber() const {
     m_product_id->retain();
     return m_product_id;
+}
+
+OSNumber *it_unbit_foohid_device::newLocationIDNumber() const {
+    m_location_id->retain();
+    return m_location_id;
 }

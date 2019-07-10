@@ -70,7 +70,7 @@ bool it_unbit_foohid::methodCreate(char *name, UInt8 name_len,
                                    unsigned char *report_descriptor,
                                    UInt16 report_descriptor_len,
                                    char *serial_number, UInt16 serial_number_len,
-                                   UInt32 vendor_id, UInt32 product_id) {
+                                   UInt32 vendor_id, UInt32 product_id, UInt32 location_id) {
     it_unbit_foohid_device *device = nullptr;
     
     OSString *key = nullptr;
@@ -121,11 +121,12 @@ bool it_unbit_foohid::methodCreate(char *name, UInt8 name_len,
     device->setSerialNumberString(serial_number_s);
     device->setVendorID(vendor_id);
     device->setProductID(product_id);
+    device->setLocationID(location_id);
     
     LogD("Attempting to init a new virtual device with name: '%s'; "
-         "serial number ('%s'); vendor ID (%d); product ID (%d).",
+         "serial number ('%s'); vendor ID (%d); product ID (%d); location ID (%d).",
          key->getCStringNoCopy(), serial_number_s->getCStringNoCopy(),
-         vendor_id, product_id);
+         vendor_id, product_id, location_id);
     
     if (!device->init(nullptr)) {
         goto fail;

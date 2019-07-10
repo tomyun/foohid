@@ -30,7 +30,7 @@ public:
     virtual bool methodCreate(char *name, UInt8 name_len,
                               unsigned char *report_descriptor, UInt16 report_descriptor_len,
                               char *serial_number = nullptr, UInt16 serial_number_len = 0,
-                              UInt32 vendor_id = 0, UInt32 product_id = 0);
+                              UInt32 vendor_id = 0, UInt32 product_id = 0, UInt32 location_id = 0);
     
     /**
      *  Destroy a given device.

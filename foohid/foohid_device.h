@@ -45,6 +45,13 @@ public:
     virtual void setProductID(uint32_t productID);
     
     /**
+     *  Set the location ID.
+     *
+     *  @param locationID The location ID.
+     */
+    virtual void setLocationID(uint32_t locationID);
+    
+    /**
      *  Return the device name, WITHOUT increasing the reference count.
      *
      *  @return The device name.
@@ -62,6 +69,7 @@ public:
     virtual OSString *newSerialNumberString() const override;
     virtual OSNumber *newVendorIDNumber() const override;
     virtual OSNumber *newProductIDNumber() const override;
+    virtual OSNumber *newLocationIDNumber() const override;
     
     virtual IOReturn newReportDescriptor(IOMemoryDescriptor **descriptor) const override;
 
@@ -78,6 +86,7 @@ private:
     OSString *m_serial_number_string = nullptr;
     OSNumber *m_vendor_id = nullptr;
     OSNumber *m_product_id = nullptr;
+    OSNumber *m_location_id = nullptr;
     it_unbit_foohid_userclient *m_user_client = nullptr;
 };
 
