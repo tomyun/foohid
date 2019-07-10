@@ -104,7 +104,7 @@ bool it_unbit_foohid::methodCreate(char *name, UInt8 name_len,
             device->isKeyboard = true;
         }
         else {
-            device->isKeyboard = true;
+            device->isKeyboard = false;
         }
     }
     
